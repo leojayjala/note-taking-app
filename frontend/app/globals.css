@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 30 10% 15%;
+
+    --card: 40 40% 97%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 40 40% 97%;
+    --popover-foreground: 30 10% 15%;
+
+    --primary: 32 80% 50%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 35 30% 90%;
+    --secondary-foreground: 30 10% 25%;
+
+    --muted: 35 20% 92%;
+    --muted-foreground: 30 10% 45%;
+
+    --accent: 32 60% 85%;
+    --accent-foreground: 30 10% 20%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 25% 88%;
+    --input: 35 25% 88%;
+    --ring: 32 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --font-display: 'Crimson Pro', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    
+    --shadow-soft: 0 2px 8px -2px hsl(30 20% 20% / 0.08), 0 4px 16px -4px hsl(30 20% 20% / 0.06);
+    --shadow-card: 0 1px 3px hsl(30 20% 20% / 0.04), 0 4px 12px -2px hsl(30 20% 20% / 0.08);
+    --shadow-elevated: 0 8px 24px -4px hsl(30 20% 20% / 0.12), 0 16px 48px -8px hsl(30 20% 20% / 0.1);
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 40 20% 92%;
+
+    --card: 30 12% 14%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 30 12% 14%;
+    --popover-foreground: 40 20% 92%;
+
+    --primary: 35 85% 55%;
+    --primary-foreground: 30 15% 10%;
+
+    --secondary: 30 10% 20%;
+    --secondary-foreground: 40 20% 85%;
+
+    --muted: 30 10% 18%;
+    --muted-foreground: 35 15% 55%;
+
+    --accent: 32 40% 25%;
+    --accent-foreground: 40 20% 90%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 10% 22%;
+    --input: 30 10% 22%;
+    --ring: 35 85% 55%;
+
+    --shadow-soft: 0 2px 8px -2px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.2), 0 4px 12px -2px hsl(0 0% 0% / 0.25);
+    --shadow-elevated: 0 8px 24px -4px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@layer components {
+  .note-card {
+    @apply bg-card rounded-lg p-5 shadow-card border border-border/50 transition-all duration-200;
+  }
+
+  .note-card:hover {
+    @apply shadow-elevated -translate-y-0.5;
+  }
+
+  .auth-input {
+    @apply w-full px-4 py-3 rounded-lg bg-background border border-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium transition-all duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg bg-secondary text-secondary-foreground font-medium transition-all duration-200 hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg text-foreground font-medium transition-all duration-200 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg bg-destructive text-destructive-foreground font-medium transition-all duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-destructive focus:ring-offset-2 focus:ring-offset-background;
+  }
+}
+
